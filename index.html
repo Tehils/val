@@ -10,212 +10,129 @@
 
   <style>
     :root{
-  --max-content-width: 980px;
-  --gap: 12px;
-  --accent: #ff2d7a;
-  --muted: #6b6b6b;
-}
-
-/* Meta & base */
-html,body{
-  height:100%;
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;                 /* prevents horizontal scroll / clipping */
-  -webkit-text-size-adjust:100%;
-  -webkit-font-smoothing:antialiased;
-  box-sizing:border-box;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg, #fff7fb);
-}
-
-/* Box sizing inheritance */
-*,*::before,*::after{ box-sizing:inherit; }
-
-/* Page container and card */
-.wrap, .card {
-  width:100%;
-  max-width:var(--max-content-width);
-  margin:0 auto;
-  padding-left: env(safe-area-inset-left, 16px);
-  padding-right: env(safe-area-inset-right, 16px);
-  min-width:0;                         /* allows flex children to shrink (fixes iOS clipping) */
-}
-
-/* Card visual layout */
-.card{
-  padding: clamp(14px, 3.2vw, 28px);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  box-shadow: 0 20px 50px rgba(18,18,18,0.06);
-  position: relative;
-  overflow: visible;
-}
-
-/* Message area */
-.message{
-  text-align:center;
-  padding: clamp(16px, 4vw, 36px);
-  border-radius: 12px;
-  margin-bottom: 16px;
-  min-width:0;                          /* important for flex shrink */
-}
-
-/* Fluid heading/text sizes */
-.nameText{
-  font-weight:800;
-  color:#222;
-  margin:0 0 8px 0;
-  line-height:1.05;
-  font-size: clamp(1.6rem, 6vw, 2.6rem);  /* scales nicely from phones to desktop */
-}
-
-.sub{ color:var(--muted); margin:0; font-weight:600; font-size: clamp(.9rem, 2.2vw, 1rem); }
-
-/* Controls layout - responsive flex */
-.controls{
-  display:flex;
-  gap:var(--gap);
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-
-/* Make inputs and buttons flexible but allow shrinking */
-.controls input[type="text"],
-.controls input[type="url"],
-.controls input[type="file"]{
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid rgba(0,0,0,0.06);
-  min-width:0;               /* allows them to shrink inside flex */
-  flex: 1 1 180px;           /* grow, shrink, base 180px */
-}
-
-/* Buttons */
-.controls button{
-  padding: clamp(8px, 2.2vw, 12px) clamp(12px, 3vw, 18px);
-  border-radius:10px;
-  border:0;
-  cursor:pointer;
-  font-weight:700;
-  white-space:nowrap;
-  flex: 0 0 auto;
-  font-size: clamp(.9rem, 2.2vw, 1rem);
-}
-
-/* Secondary button style example */
-.controls button.secondary{
-  background:#fff;
-  border:1px solid #eee;
-  color:#333;
-}
-
-/* Gallery: responsive grid that fits as many columns as the viewport allows */
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap:var(--gap);
-  align-items:start;
-  margin-top:12px;
-  width:100%;
-}
-
-/* Responsive images in gallery */
-.gallery img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:12px;
-  display:block;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition: transform .18s ease;
-}
-
-/* Make images slightly smaller on narrow screens */
-@media (max-width:480px){
-  .gallery img{ height:120px; }
-}
-
-/* Ensure any inline images or media are responsive */
-img, video, audio, iframe{
-  max-width:100%;
-  height:auto;
-  display:block;
-}
-
-/* Helpful utility: prevents overflow from long words/emoji lines */
-.nameText, .sub, p, li {
-  word-break: break-word;
-  hyphens: auto;
-  min-width:0;
-}
-
-/* Buttons take full width on very small screens for easier tapping */
-@media (max-width:520px){
-  .controls{ gap:10px; }
-  .controls input[type="text"], .controls input[type="url"]{
-    flex: 1 1 100%;
-  }
-  .controls button{
-    width:100%;
-    flex: 1 1 100%;
-  }
-  .card{ padding: 14px; border-radius:14px; }
-  .nameText{ font-size: clamp(1.3rem, 6.5vw, 1.9rem); }
-}
-
-/* Tablet tweaks */
-@media (min-width:521px) and (max-width:900px){
-  .gallery img{ height:140px; }
-}
-
-/* Desktop/large screens */
-@media (min-width:901px){
-  .gallery img{ height:180px; }
-}
-
-/* Small final check: make sure the page never creates horizontal scroll */
-html, body { overscroll-behavior-x: none; }
-     :root{
-      --bg1:#fff5f7;
-      --bg2:#fffaf5;
-      --accent:#ff4d79;
-      --accent-dark:#e23b67;
-      --muted:rgba(0,0,0,0.45);
-      --card-bg: rgba(255,255,255,0.92);
+      --max-content-width: 980px;
+      --gap: 12px;
+      --accent: #ff4d79;
+      --accent-dark: #e23b67;
+      --muted: rgba(0,0,0,0.45);
+      --bg1: #fff5f7;
+      --bg2: #fffaf5;
+      --card-bg: rgba(255,255,255,0.96);
     }
-    html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background: linear-gradient(135deg,var(--bg1),var(--bg2)); display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box;}
-    /* Background decorative photos */
-    .bg-photo{ position:absolute; width:420px; height:620px; object-fit:cover; border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,0.20); transform-origin:center; filter: saturate(.9) contrast(.95) brightness(.95); opacity:0.5; pointer-events:none; }
-    .bg-photo.one{ left:-80px; top:-50px; transform: rotate(-12deg) scale(.95); filter: blur(1.6px) grayscale(.08) opacity(.30); }
-    .bg-photo.two{ right:-100px; bottom:-70px; transform: rotate(10deg) scale(.95); filter: blur(2px) grayscale(.12) opacity(.32); }
 
-    .grain { position:absolute; inset:0; background-image: radial-gradient(rgba(0,0,0,0.01) 1px, transparent 1px); background-size: 6px 6px; mix-blend-mode: overlay; pointer-events:none; }
+    /* Meta & base */
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      width:100%;
+      overflow-x:hidden;                 /* prevents horizontal scroll / clipping */
+      -webkit-text-size-adjust:100%;
+      -webkit-font-smoothing:antialiased;
+      box-sizing:border-box;
+      font-family: "Poppins", Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: #222;
+    }
 
-    /* Main card */
-    .card{ position:relative; z-index:5; width:min(920px,94vw); max-width:920px; height:min(520px,78vh); display:flex; align-items:center; justify-content:center; border-radius:22px; padding:48px; box-sizing:border-box; background: linear-gradient(180deg, rgba(255,255,255,0.96), var(--card-bg)); box-shadow: 0 12px 45px rgba(0,0,0,0.12); text-align:center; overflow:hidden; backdrop-filter: blur(6px) saturate(1.05); }
-    .content{ max-width:680px; margin:0 auto; }
-    h1{ margin:0; font-size: clamp(28px,6.4vw,56px); line-height:1.02; color:#222; letter-spacing:-0.6px; display:flex; align-items:center; justify-content:center; gap:12px; font-weight:700; flex-wrap:wrap; }
-    .script{ font-family:'Great Vibes', cursive; color:var(--accent); font-size: clamp(28px,6vw,56px); text-shadow: 0 6px 18px rgba(255,77,121,0.08); }
-    .hearts{ display:inline-flex; gap:8px; font-size:1.05em; animation: heartsPulse 1.6s ease-in-out infinite; transform-origin:center; }
+    /* Box sizing inheritance */
+    *,*::before,*::after{ box-sizing:inherit; }
+
+    /* Page container and card */
+    .wrap, .card {
+      width:100%;
+      max-width:var(--max-content-width);
+      margin:0 auto;
+      padding-left: env(safe-area-inset-left, 16px);
+      padding-right: env(safe-area-inset-right, 16px);
+      min-width:0;                         /* allows flex children to shrink (fixes iOS clipping) */
+    }
+
+    /* Card visual layout */
+    .card{
+      padding: clamp(20px, 4vw, 48px);
+      border-radius: 22px;
+      background: var(--card-bg);
+      box-shadow: 0 30px 80px rgba(18,18,18,0.06);
+      position: relative;
+      overflow: visible;
+      width: min(920px, 94vw);
+      max-width: 920px;
+      height: min(520px, 78vh);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .content{
+      max-width:680px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    h1{ 
+      margin:0; 
+      font-size: clamp(28px,6.4vw,56px); 
+      line-height:1.02; 
+      color:#222; 
+      letter-spacing:-0.6px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      gap:12px; 
+      font-weight:700; 
+      flex-wrap:wrap;
+    }
+
+    .script{ 
+      font-family:'Great Vibes', cursive; 
+      color:var(--accent); 
+      font-size: clamp(28px,6vw,56px); 
+      text-shadow: 0 6px 18px rgba(255,77,121,0.08); 
+    }
+
+    .hearts{ 
+      display:inline-flex; 
+      gap:8px; 
+      font-size:1.05em; 
+      animation: heartsPulse 1.6s ease-in-out infinite; 
+      transform-origin:center; 
+    }
     @keyframes heartsPulse{ 0%,100%{ transform:translateY(0) scale(1); } 50% { transform:translateY(-6px) scale(1.06); } }
 
-    .sub{ margin-top:12px; color:var(--muted); font-size:clamp(14px,2.7vw,18px); }
+    .sub{ 
+      margin-top:12px; 
+      color:var(--muted); 
+      font-size:clamp(14px,2.7vw,18px); 
+      font-weight:600;
+    }
 
-    /* Yes button */
+    /* CTA */
     .cta-wrap{ margin-top:28px; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; }
     .yes-btn{
-      appearance:none; border:0; background: linear-gradient(180deg,var(--accent),var(--accent-dark)); color:white; padding:14px 28px; border-radius:12px; font-weight:700; font-size:18px; cursor:pointer; box-shadow: 0 10px 30px rgba(226,59,103,0.18); transition: transform .12s ease, box-shadow .12s ease;
+      appearance:none; 
+      border:0; 
+      background: linear-gradient(180deg,var(--accent),var(--accent-dark)); 
+      color:white; 
+      padding:14px 28px; 
+      border-radius:12px; 
+      font-weight:700; 
+      font-size:18px; 
+      cursor:pointer;
+      box-shadow: 0 10px 30px rgba(226,59,103,0.12);
+      transition: transform .12s ease, box-shadow .12s ease;
     }
+    .yes-btn:hover{ transform: translateY(-2px); box-shadow: 0 18px 40px rgba(226,59,103,0.14); }
     .yes-btn:active{ transform: translateY(2px) scale(.995); }
-    .yes-btn:focus{ outline:3px solid rgba(255,77,121,0.22); outline-offset:3px; }
+    .yes-btn:focus{ outline:3px solid rgba(255,77,121,0.18); outline-offset:3px; }
 
     .muted-btn{ background:transparent; color:var(--muted); border-radius:10px; border:1px solid rgba(0,0,0,0.06); padding:10px 14px; cursor:pointer; font-size:14px; }
 
-    /* polaroids in front */
+    /* Polaroids and decorations */
+    .bg-photo{ position:absolute; width:420px; height:620px; object-fit:cover; border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,0.20); transform-origin:center; filter: saturate(.95) contrast(.95) opacity(.32); pointer-events:none; }
+    .bg-photo.one{ left:-80px; top:-50px; transform: rotate(-12deg) scale(.95); }
+    .bg-photo.two{ right:-100px; bottom:-70px; transform: rotate(10deg) scale(.95); }
+
     .polaroids{ position:absolute; z-index:6; inset:0; pointer-events:none; display:block; }
     .polaroid{ position:absolute; width:170px; border-radius:10px; background:#fff; padding:8px; box-shadow: 0 12px 30px rgba(0,0,0,0.18); transform-origin:center; overflow:hidden; }
     .polaroid img{ width:100%; height:120px; object-fit:cover; border-radius:6px; display:block; }
@@ -224,43 +141,51 @@ html, body { overscroll-behavior-x: none; }
 
     .footer{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); color:var(--muted); font-size:12px; z-index:7; }
 
-    /* Celebration overlay after click */
-    .overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:50; pointer-events:none; opacity:0; transition: opacity .25s ease; }
+    /* Overlay */
+    .overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:50; pointer-events:none; opacity:0; transition: opacity .25s ease; background: rgba(0,0,0,0.18); }
     .overlay.show{ opacity:1; pointer-events:auto; }
-    .overlay-card{ background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95)); padding:28px; border-radius:18px; box-shadow:0 30px 80px rgba(0,0,0,0.28); text-align:center; transform:translateY(6px); }
+    .overlay-card{ background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95)); padding:28px; border-radius:18px; box-shadow:0 30px 80px rgba(0,0,0,0.28); text-align:center; width:min(640px,92vw); }
     .yay{ font-family:'Great Vibes', cursive; color:var(--accent-dark); font-size: clamp(28px,6vw,56px); margin:0; }
     .yay-sub{ margin-top:8px; color:var(--muted); }
 
-    /* small controls in overlay */
     .overlay-controls{ margin-top:18px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .control-btn{ padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:600; }
+    .control-btn{ padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:600; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 
-    /* print styles make the card print as a single centered card */
+    /* Gallery helper (if you expand) */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap:var(--gap);
+      align-items:start;
+      margin-top:12px;
+      width:100%;
+    }
+
+    /* Responsive images and helpers */
+    img, video, audio, iframe{ max-width:100%; height:auto; display:block; }
+    .nameText, .sub, p, li { word-break: break-word; hyphens: auto; min-width:0; }
+
+    /* Responsive / print */
+    @media (max-width:520px){
+      .card{ padding: 14px; border-radius:14px; height:auto; min-height:420px; }
+      .yes-btn{ width:100%; flex: 1 1 100%; }
+      .bg-photo{ display:none; }
+      .polaroid{ display:none; }
+    }
+
     @media print {
       body{ background: white !important; padding:0 !important; }
-      .bg-photo, .polaroids, .grain, .footer, .yes-btn, .muted-btn { display:none !important; }
+      .bg-photo, .polaroids, .footer, .yes-btn, .muted-btn, .overlay { display:none !important; }
       .card{ box-shadow:none !important; border-radius:0 !important; width:100% !important; height:auto !important; padding:20px !important; }
       .content{ max-width:none; }
       h1{ color:#111; }
     }
-
-    @media (max-width:700px){
-      .bg-photo{ width:240px;
-      height:360px;
-      opacity:0.35; }
-      .polaroid{ width:120px;
-      height:60px; }
-      .card{ padding:28px; height:auto; min-height:360px; }
-      .overlay-card{ width:90vw; padding:20px; }
-    } 
   </style>
 </head>
 <body>
-  <!-- background photos - replace with your own files at images/image1.jpg and images/image2.jpg or image1.jpg and image2/jpg (jpeg) like the one below-->
+  <!-- background photos - replace with your own files at image1.jpeg and image2.jpeg -->
   <img class="bg-photo one" src="image1.jpeg" alt="decorative photo 1" />
   <img class="bg-photo two" src="image2.jpeg" alt="decorative photo 2" />
-
-  <div class="grain" aria-hidden="true"></div>
 
   <main class="card" role="main" aria-labelledby="hero">
     <div class="content">
@@ -274,6 +199,7 @@ html, body { overscroll-behavior-x: none; }
 
       <div class="cta-wrap" role="group" aria-label="Answer buttons">
         <button class="yes-btn" id="yesBtn" aria-pressed="false">Yes!!</button>
+        <!-- Optional helpers you can enable by uncommenting below -->
         <!-- <button class="muted-btn" id="printBtn" title="Print as a card">Print as card</button>
         <button class="muted-btn" id="hostHelpBtn" title="How to share">How to share</button> -->
       </div>
@@ -281,124 +207,29 @@ html, body { overscroll-behavior-x: none; }
 
     <!-- small polaroids floating in front for extra effect -->
     <div class="polaroids" aria-hidden="true">
-      <div class="polaroid pol1"><img src="image1.jpeg" alt=""></div>
-      <div class="polaroid pol2"><img src="image2.jpeg" alt=""></div>
+      <div class="polaroid pol1"><img src="image1.jpeg" alt="photo 1"></div>
+      <div class="polaroid pol2"><img src="image2.jpeg" alt="photo 2"></div>
     </div>
 
     <div class="footer">Made with ♥ from your baby boy</div>
   </main>
 
-  <!-- audio: using your filename Dave-Ft-Tems-Raindance (place the exact file at music/Dave-Ft-Tems-Raindance.mp3).
-       A hosted fallback is included if the local file fails. 'controls' is present for testing; remove it later if you like. -->
+  <!-- audio: place the exact file at music/Dave-Ft-Tems-Raindance.mp3 to use local playback.
+       A hosted fallback (MDN sample) will be used if local file fails. -->
   <audio id="music" preload="auto" controls>
-    <source src="Dave-Ft-Tems-Raindance.mp3" type="audio/mpeg">
-    <source src="https://www.xclusiveloaded.net/artist/tems" type="audio/mpeg">
+    <source src="music/Dave-Ft-Tems-Raindance.mp3" type="audio/mpeg">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <!-- confetti library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-  <script>
-    // Elements
-    const yesBtn = document.getElementById('yesBtn');
-    const overlay = document.getElementById('overlay');
-    const overlayClose = document.getElementById('overlayClose');
-    const overlayPrint = document.getElementById('overlayPrint');
-    const printBtn = document.getElementById('printBtn');
-    const hostHelpBtn = document.getElementById('hostHelpBtn');
-    const music = document.getElementById('music');
-
-    // confetti helper (multiple bursts for a more celebratory effect)
-    function shootConfetti() {
-      confetti({ particleCount: 140, spread: 80, origin: { y: 0.55 }, scalar: 1.05 });
-      confetti({ particleCount: 60, spread: 50, origin: { x: 0.1, y: 0.3 } });
-      confetti({ particleCount: 60, spread: 50, origin: { x: 0.9, y: 0.3 } });
-      const interval = setInterval(() => {
-        confetti({ particleCount: 14, spread: 50, origin: { x: Math.random(), y: Math.random() * 0.6 } });
-      }, 250);
-      setTimeout(() => clearInterval(interval), 3000);
-    }
-
-    function showOverlay() {
-      const overlayEl = document.getElementById('overlay');
-      overlayEl.classList.add('show');
-      overlayEl.setAttribute('aria-hidden', 'false');
-    }
-    function hideOverlay() {
-      const overlayEl = document.getElementById('overlay');
-      overlayEl.classList.remove('show');
-      overlayEl.setAttribute('aria-hidden', 'true');
-    }
-
-    yesBtn.addEventListener('click', async (e) => {
-      yesBtn.setAttribute('aria-pressed','true');
-
-      // Play chosen music (this user gesture should allow playback)
-      try {
-        if (music) {
-          // try to load and play local file; if it fails, audio.error listener will handle fallback
-          music.currentTime = 0;
-          await music.play();
-        }
-      } catch (err) {
-        console.warn('audio play failed', err);
-      }
-
-      // start confetti and show overlay
-      shootConfetti();
-      showOverlay();
-    });
-
-    // Overlay element was declared near the bottom of the previous file; create it here for completeness
-    // If overlay buttons exist, set up handlers; if not, skip gracefully
-    const overlayElem = document.getElementById('overlay');
-    if (overlayElem) {
-      const closeBtn = document.getElementById('overlayClose');
-      const printOverlayBtn = document.getElementById('overlayPrint');
-      if (closeBtn) closeBtn.addEventListener('click', () => { hideOverlay(); try{ music.pause(); music.currentTime=0;}catch(e){} });
-      if (printOverlayBtn) printOverlayBtn.addEventListener('click', () => { hideOverlay(); setTimeout(() => window.print(), 250); });
-    }
-
-    printBtn.addEventListener('click', () => window.print());
-
-    hostHelpBtn.addEventListener('click', () => {
-      alert(
-        'To share this page publicly:\\n\\n' +
-        '1) Put this index.html in a folder with an images/ subfolder containing image1.jpg and image2.jpg, and a music/ folder containing Dave-Ft-Tems-Raindance.mp3.\\n' +
-        '2) Upload the folder to GitHub and enable GitHub Pages, or drag the folder to Netlify or Vercel.\\n' +
-        '3) Netlify/Vercel provide a shareable URL instantly. GitHub Pages works well for simple hosting too.'
-      );
-    });
-
-    // Debug: show an alert if audio loading fails and automatically switch to hosted fallback
-    if (music) {
-      music.addEventListener('error', (e) => {
-        console.error('Audio error event:', e);
-        alert('Audio failed to load. Make sure the file is at music/Dave-Ft-Tems-Raindance.mp3 (case-sensitive). The page will try a hosted fallback.');
-        // If the local source fails, switch to fallback (the second source)
-        const sources = music.querySelectorAll('source');
-        if (sources.length > 1 && sources[1].src) {
-          music.src = sources[1].src;
-          music.load();
-        }
-      });
-    }
-
-    // accessibility: close overlay with Escape if present
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape' && overlayElem && overlayElem.classList.contains('show')) {
-        hideOverlay();
-        try { music.pause(); music.currentTime = 0; } catch (e) {}
-      }
-    });
-  </script>
-
-  <!-- Celebration overlay (kept here to ensure referenced elements exist) -->
+  <!-- Celebration overlay (placed before script so elements exist when JS runs) -->
   <div class="overlay" id="overlay" aria-hidden="true">
     <div class="overlay-card" role="dialog" aria-modal="true" aria-labelledby="yayText">
       <h2 class="yay" id="yayText">She said YES!! 🎉</h2>
-      <div class="yay-sub">You made my day(you no go press yes ke) — here's to an amazing valentine together 💖</div>
+      <div class="yay-sub">You made my day — here's to an amazing valentine together 💖</div>
 
       <div class="overlay-controls">
         <button class="control-btn" id="overlayPrint">Print this card</button>
@@ -406,17 +237,118 @@ html, body { overscroll-behavior-x: none; }
       </div>
     </div>
   </div>
+
+  <script>
+    // Wait until DOM is ready (script is at bottom already, but keep this as a safe guard)
+    (function () {
+      // Elements (guarded)
+      const yesBtn = document.getElementById('yesBtn');
+      const music = document.getElementById('music');
+      const overlayElem = document.getElementById('overlay');
+      const overlayClose = document.getElementById('overlayClose');
+      const overlayPrint = document.getElementById('overlayPrint');
+      const printBtn = document.getElementById('printBtn');
+      const hostHelpBtn = document.getElementById('hostHelpBtn');
+
+      // confetti helper (multiple bursts for a more celebratory effect)
+      function shootConfetti() {
+        if (typeof confetti !== 'function') return;
+        confetti({ particleCount: 140, spread: 80, origin: { y: 0.55 }, scalar: 1.05 });
+        confetti({ particleCount: 60, spread: 50, origin: { x: 0.1, y: 0.3 } });
+        confetti({ particleCount: 60, spread: 50, origin: { x: 0.9, y: 0.3 } });
+        const interval = setInterval(() => {
+          confetti({ particleCount: 14, spread: 50, origin: { x: Math.random(), y: Math.random() * 0.6 } });
+        }, 250);
+        setTimeout(() => clearInterval(interval), 3000);
+      }
+
+      function showOverlay() {
+        if (!overlayElem) return;
+        overlayElem.classList.add('show');
+        overlayElem.setAttribute('aria-hidden', 'false');
+        // move focus into dialog for accessibility
+        const heading = overlayElem.querySelector('#yayText');
+        if (heading && typeof heading.focus === 'function') heading.focus();
+      }
+      function hideOverlay() {
+        if (!overlayElem) return;
+        overlayElem.classList.remove('show');
+        overlayElem.setAttribute('aria-hidden', 'true');
+      }
+
+      if (yesBtn) {
+        yesBtn.addEventListener('click', async () => {
+          yesBtn.setAttribute('aria-pressed','true');
+
+          // Play chosen music (user gesture should allow playback)
+          try {
+            if (music) {
+              music.currentTime = 0;
+              await music.play();
+            }
+          } catch (err) {
+            console.warn('audio play failed', err);
+          }
+
+          // start confetti and show overlay
+          shootConfetti();
+          showOverlay();
+        });
+      }
+
+      // Safe handlers for overlay buttons
+      if (overlayClose) {
+        overlayClose.addEventListener('click', () => {
+          hideOverlay();
+          try { if (music) { music.pause(); music.currentTime = 0; } } catch (e) {}
+        });
+      }
+      if (overlayPrint) {
+        overlayPrint.addEventListener('click', () => {
+          hideOverlay();
+          setTimeout(() => window.print(), 250);
+        });
+      }
+
+      // Optional: print/host helpers (only if you uncomment the buttons)
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+      if (hostHelpBtn) {
+        hostHelpBtn.addEventListener('click', () => {
+          alert(
+            'To share this page publicly:\n\n' +
+            '1) Put this index.html in a folder with images (image1.jpeg & image2.jpeg) and a music/ folder containing Dave-Ft-Tems-Raindance.mp3.\n' +
+            '2) Upload the folder to GitHub and enable GitHub Pages, or drag the folder to Netlify or Vercel.\n' +
+            '3) Netlify/Vercel provide a shareable URL instantly. GitHub Pages works well for simple hosting too.'
+          );
+        });
+      }
+
+      // Debug: show an alert if audio loading fails and automatically switch to hosted fallback
+      if (music) {
+        music.addEventListener('error', (e) => {
+          console.error('Audio error event:', e);
+          // If the local source fails, switch to fallback (the second source)
+          const sources = music.querySelectorAll('source');
+          if (sources.length > 1 && sources[1].src) {
+            // replace src and reload
+            music.src = sources[1].src;
+            music.load();
+            // don't spam the user; optionally notify once
+            // alert('Local audio failed to load. Using fallback audio.');
+          }
+        });
+      }
+
+      // accessibility: close overlay with Escape if present
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && overlayElem && overlayElem.classList.contains('show')) {
+          hideOverlay();
+          try { if (music) { music.pause(); music.currentTime = 0; } } catch (e) {}
+        }
+      });
+    })();
+  </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
