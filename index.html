@@ -8,188 +8,32 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
+
   <style>
     :root{
-  --max-content-width: 980px;
-  --gap: 12px;
-  --accent: #ff2d7a;
-  --muted: #6b6b6b;
-}
-
-/* Meta & base */
-html,body{
-  height:100%;
-  margin:0;
-  padding:0;
-  width:100%;
-  overflow-x:hidden;                 /* prevents horizontal scroll / clipping */
-  -webkit-text-size-adjust:100%;
-  -webkit-font-smoothing:antialiased;
-  box-sizing:border-box;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg, #fff7fb);
-}
-
-/* Box sizing inheritance */
-*,*::before,*::after{ box-sizing:inherit; }
-
-/* Page container and card */
-.wrap, .card {
-  width:100%;
-  max-width:var(--max-content-width);
-  margin:0 auto;
-  padding-left: env(safe-area-inset-left, 16px);
-  padding-right: env(safe-area-inset-right, 16px);
-  min-width:0;                         /* allows flex children to shrink (fixes iOS clipping) */
-}
-
-/* Card visual layout */
-.card{
-  padding: clamp(14px, 3.2vw, 28px);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  box-shadow: 0 20px 50px rgba(18,18,18,0.06);
-  position: relative;
-  overflow: visible;
-}
-
-/* Message area */
-.message{
-  text-align:center;
-  padding: clamp(16px, 4vw, 36px);
-  border-radius: 12px;
-  margin-bottom: 16px;
-  min-width:0;                          /* important for flex shrink */
-}
-
-/* Fluid heading/text sizes */
-.nameText{
-  font-weight:800;
-  color:#222;
-  margin:0 0 8px 0;
-  line-height:1.05;
-  font-size: clamp(1.6rem, 6vw, 2.6rem);  /* scales nicely from phones to desktop */
-}
-
-.sub{ color:var(--muted); margin:0; font-weight:600; font-size: clamp(.9rem, 2.2vw, 1rem); }
-
-/* Controls layout - responsive flex */
-.controls{
-  display:flex;
-  gap:var(--gap);
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-
-/* Make inputs and buttons flexible but allow shrinking */
-.controls input[type="text"],
-.controls input[type="url"],
-.controls input[type="file"]{
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid rgba(0,0,0,0.06);
-  min-width:0;               /* allows them to shrink inside flex */
-  flex: 1 1 180px;           /* grow, shrink, base 180px */
-}
-
-/* Buttons */
-.controls button{
-  padding: clamp(8px, 2.2vw, 12px) clamp(12px, 3vw, 18px);
-  border-radius:10px;
-  border:0;
-  cursor:pointer;
-  font-weight:700;
-  white-space:nowrap;
-  flex: 0 0 auto;
-  font-size: clamp(.9rem, 2.2vw, 1rem);
-}
-
-/* Secondary button style example */
-.controls button.secondary{
-  background:#fff;
-  border:1px solid #eee;
-  color:#333;
-}
-
-/* Gallery: responsive grid that fits as many columns as the viewport allows */
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap:var(--gap);
-  align-items:start;
-  margin-top:12px;
-  width:100%;
-}
-
-/* Responsive images in gallery */
-.gallery img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:12px;
-  display:block;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition: transform .18s ease;
-}
-
-/* Make images slightly smaller on narrow screens */
-@media (max-width:480px){
-  .gallery img{ height:120px; }
-}
-
-/* Ensure any inline images or media are responsive */
-img, video, audio, iframe{
-  max-width:100%;
-  height:auto;
-  display:block;
-}
-
-/* Helpful utility: prevents overflow from long words/emoji lines */
-.nameText, .sub, p, li {
-  word-break: break-word;
-  hyphens: auto;
-  min-width:0;
-}
-
-/* Buttons take full width on very small screens for easier tapping */
-@media (max-width:520px){
-  .controls{ gap:10px; }
-  .controls input[type="text"], .controls input[type="url"]{
-    flex: 1 1 100%;
-  }
-  .controls button{
-    width:100%;
-    flex: 1 1 100%;
-  }
-  .card{ padding: 14px; border-radius:14px; }
-  .nameText{ font-size: clamp(1.3rem, 6.5vw, 1.9rem); }
-}
-
-/* Tablet tweaks */
-@media (min-width:521px) and (max-width:900px){
-  .gallery img{ height:140px; }
-}
-
-/* Desktop/large screens */
-@media (min-width:901px){
-  .gallery img{ height:180px; }
-}
-
-/* Small final check: make sure the page never creates horizontal scroll */
-html, body { overscroll-behavior-x: none; }
-     :root{
-      --bg1:#fff5f7;
+      --bg1:#fff5f7;             /*works better on windows*/
       --bg2:#fffaf5;
       --accent:#ff4d79;
       --accent-dark:#e23b67;
       --muted:rgba(0,0,0,0.45);
       --card-bg: rgba(255,255,255,0.92);
+      /* --max-content-width: 980px;
+      --gap: 12px;
+      --accent: #ff2d7a;
+      --muted: #6b6b6b; */
     }
-    html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background: linear-gradient(135deg,var(--bg1),var(--bg2)); display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box;}
+    html,body{
+      height:100%;
+      margin:0;
+      padding:0;
+      width:100%;
+       overflow-x:hidden;                 /* prevents horizontal scroll / clipping */
+       -webkit-text-size-adjust:100%;
+       -webkit-font-smoothing:antialiased;
+       box-sizing:border-box;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background: linear-gradient(135deg,var(--bg1),var(--bg2)); display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box;}
     /* Background decorative photos */
-    .bg-photo{ position:absolute; width:420px; height:620px; object-fit:cover; border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,0.20); transform-origin:center; filter: saturate(.9) contrast(.95) brightness(.95); opacity:0.5; pointer-events:none; }
+    .bg-photo{ position:absolute; width:420px; height:620px; object-fit:cover; border-radius:18px; box-shadow: 0 20px 60px rgba(0,0,0,0.20); transform-origin:center; filter: saturate(.9) contrast(.95) brightness(.95); opacity:0.65; pointer-events:none; }
     .bg-photo.one{ left:-80px; top:-50px; transform: rotate(-12deg) scale(.95); filter: blur(1.6px) grayscale(.08) opacity(.30); }
     .bg-photo.two{ right:-100px; bottom:-70px; transform: rotate(10deg) scale(.95); filter: blur(2px) grayscale(.12) opacity(.32); }
 
@@ -246,12 +90,12 @@ html, body { overscroll-behavior-x: none; }
 
     @media (max-width:700px){
       .bg-photo{ width:240px;
-      height:360px;
-      opacity:0.35; }
-      .polaroid{ display:block; }
+            height:360px;
+            opacity:0.35; }
+      .polaroid{ width: 55px; height:55px }
       .card{ padding:28px; height:auto; min-height:360px; }
       .overlay-card{ width:90vw; padding:20px; }
-    } 
+    }
   </style>
 </head>
 <body>
@@ -269,7 +113,7 @@ html, body { overscroll-behavior-x: none; }
         <span class="hearts" aria-hidden="true">❤️💕</span>
       </h1>
 
-      <div class="sub">I put a couple of our pictures in the background — my heart is right there with them. Hope you like em?👀...I LOVE YOUUU🎶❤️</div>
+      <div class="sub">I put a couple of our pictures in the background — my heart is right there with them. Hope you like em?👀...I love youuuu🎶❤️</div>
 
       <div class="cta-wrap" role="group" aria-label="Answer buttons">
         <button class="yes-btn" id="yesBtn" aria-pressed="false">Yes!!</button>
@@ -406,6 +250,4 @@ html, body { overscroll-behavior-x: none; }
     </div>
   </div>
 </body>
-
 </html>
-
